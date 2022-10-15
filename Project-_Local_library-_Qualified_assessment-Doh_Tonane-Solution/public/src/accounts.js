@@ -30,9 +30,7 @@ function getBooksPossessedByAccount(account={}, books=[], authors=[]) {
     let recentBorrower = bookObj.borrows[0]
     if (recentBorrower.returned === false && recentBorrower.id === givenAccountId) {
       const {authorId} = bookObj
-      let foundAuthorObj = authors.find((authorObj) => {
-        return authorObj.id === authorId
-      })
+      let foundAuthorObj = findAccountById(authors, authorId)
       bookObj.author = foundAuthorObj
       return bookObj
     }
